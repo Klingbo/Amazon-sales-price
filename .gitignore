@@ -106,3 +106,8 @@ for i in range(52):
         print(price, file=item_price)
     else:
         print('Finish')
+        
+html = urlopen('https://www.amazon.com/dp/B00CRR5L8U')
+bsobj = BeautifulSoup(html, "html.parser")
+price = bsobj.findAll('span', {'id': 'priceblock_saleprice'})
+print(price[0].get_text())
